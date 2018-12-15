@@ -31,7 +31,7 @@ public class GameEngine {
 
     public void updateAndDrawBird(Canvas canvas) {
         if (gameState == 1) {
-            if (bird.getY() < AppConstants.SCREE_HEIGHT - AppConstants.getBitmapBank().getBirdHeight()) {
+            if (bird.getY() < (AppConstants.SCREE_HEIGHT - AppConstants.getBitmapBank().getBirdHeight()) || bird.getVelocity() < 0) {
                 bird.setVelocity(bird.getVelocity() + AppConstants.gravity);
                 bird.setY(bird.getY() + bird.getVelocity());
             }
