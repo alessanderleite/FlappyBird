@@ -2,7 +2,7 @@ package com.example.alessander.flappybird;
 
 public class Bird {
 
-    private int birdX, birdY, currentFrame;
+    private int birdX, birdY, currentFrame, velocity;
     public static int maxFrame;
 
     public Bird() {
@@ -10,6 +10,17 @@ public class Bird {
         birdY = AppConstants.SCREE_HEIGHT/2 - AppConstants.getBitmapBank().getBirdHeight()/2;
         currentFrame = 0;
         maxFrame =3;
+        velocity = 0;
+    }
+
+    // Getter method for velocity
+    public int getVelocity() {
+        return velocity;
+    }
+
+    // Setter method for velocity
+    public void setVelocity(int velocity) {
+        this.velocity = velocity;
     }
 
     // Getter method for current frame
