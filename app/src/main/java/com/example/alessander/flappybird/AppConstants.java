@@ -11,18 +11,21 @@ public class AppConstants {
     static GameEngine gameEngine; //GameEngine object reference
     static int SCREEN_WIDTH, SCREE_HEIGHT;
     static int gravity;
+    static int VELOCITY_WHEN_JUMPED;
 
     public static void initialization(Context context) {
         setScreenSize(context);
         bitmapBank = new BitmapBank(context.getResources());
         gameEngine = new GameEngine();
-        gravity = 3;
+        AppConstants.gravity = 3;
+        AppConstants.VELOCITY_WHEN_JUMPED = -40;
     }
-
+    // Return BitmapBank instance
     public static BitmapBank getBitmapBank() {
         return bitmapBank;
     }
 
+    // Return GameEngine instance
     public static GameEngine getGameEngine() {
         return gameEngine;
     }
