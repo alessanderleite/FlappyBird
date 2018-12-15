@@ -10,27 +10,24 @@ public class BackgroundImage {
         backgroundImageVelocity = 3;
     }
 
-    public int getBackgroundImageX() {
+    public int getX() {
         return backgroundImageX;
     }
 
-    public void setBackgroundImageX(int backgroundImageX) {
-        this.backgroundImageX = backgroundImageX;
-    }
-
-    public int getBackgroundImageY() {
+    public int getY() {
         return backgroundImageY;
     }
 
-    public int getBackgroundImageVelocity() {
+    public void setX(int backgroundImageX) {
+        this.backgroundImageX = backgroundImageX;
+    }
+
+    public void setY(int backgroundImageY) {
+        this.backgroundImageY = backgroundImageY;
+    }
+
+    public int getVelocity() {
         return backgroundImageVelocity;
     }
 
-    public void setBackgroundImageVelocity(int backgroundImageVelocity) {
-        this.backgroundImageVelocity = backgroundImageVelocity;
-    }
-
-    public void setBackgroundImageY(int backgroundImageY) {
-        this.backgroundImageY = backgroundImageY;
-    }
 }
