@@ -26,7 +26,7 @@ public class GameThread extends Thread {
             Canvas canvas = surfaceHolder.lockCanvas(null);
             if (canvas != null) {
                 synchronized (surfaceHolder) {
-                    AppConstants.getGameEnginge().updateAndDrawBackgroundImage(canvas);
+                    AppConstants.getGameEngine().updateAndDrawBackgroundImage(canvas);
                     //unlocking the canvas
                     surfaceHolder.unlockCanvasAndPost(canvas);
                 }
