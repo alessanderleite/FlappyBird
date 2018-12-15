@@ -10,11 +10,13 @@ public class AppConstants {
     static BitmapBank bitmapBank; //Bitmap object reference
     static GameEngine gameEngine; //GameEngine object reference
     static int SCREEN_WIDTH, SCREE_HEIGHT;
+    static int gravity;
 
     public static void initialization(Context context) {
         setScreenSize(context);
         bitmapBank = new BitmapBank(context.getResources());
         gameEngine = new GameEngine();
+        gravity = 3;
     }
 
     public static BitmapBank getBitmapBank() {
