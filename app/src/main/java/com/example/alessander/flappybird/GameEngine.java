@@ -3,6 +3,7 @@ package com.example.alessander.flappybird;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -46,7 +47,14 @@ public class GameEngine {
 
     public void updateAndDrawTubes(Canvas canvas) {
         if (gameState == 1) {
-            if (tubes.get(scoringTube).getTubeX() < bird.getX() - AppConstants.getBitmapBank().getTubeWidth()) {
+            if ((tubes.get(scoringTube).getTubeX() < bird.getX() + AppConstants.getBitmapBank().getBirdWidth())
+                    && (tubes.get(scoringTube).getTopTubeOffsetY() > bird.getY()
+                    || tubes.get(scoringTube).getBottomTubeY() < (bird.getY() +
+                    AppConstants.getBitmapBank().getBirdHeight()))) {
+                // Go to GameOver screen
+                gameState = 2;
+                Log.d("Game", "Over");
+            } else if (tubes.get(scoringTube).getTubeX() < bird.getX() - AppConstants.getBitmapBank().getTubeWidth()) {
                 score++;
                 scoringTube++;
                 if (scoringTube > AppConstants.numberOfTubes - 1) {
@@ -54,9 +62,9 @@ public class GameEngine {
                 }
             }
             for (int i = 0; i < AppConstants.numberOfTubes; i++) {
-                if (tubes.get(i).getTubeX() < - AppConstants.getBitmapBank().getTubeWidth()) {
+                if (tubes.get(i).getTubeX() < -AppConstants.getBitmapBank().getTubeWidth()) {
                     tubes.get(i).setTubeX(tubes.get(i).getTubeX() +
-                    AppConstants.numberOfTubes * AppConstants.distanceBetweenTubes);
+                            AppConstants.numberOfTubes * AppConstants.distanceBetweenTubes);
                     int topTubeOffsetY = AppConstants.minTubeOffsetY +
                             random.nextInt(AppConstants.maxTubeOffsetY - AppConstants.minTubeOffsetY + 1);
                     tubes.get(i).setTopTubeOffsetY(topTubeOffsetY);
