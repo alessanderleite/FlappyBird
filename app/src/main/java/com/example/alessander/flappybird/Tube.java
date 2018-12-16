@@ -32,7 +32,7 @@ public class Tube {
         this.tubeX = tubeX;
     }
 
-    public void setTopTubeOffsetY() {
+    public void setTopTubeOffsetY(int topTubeOffsetY) {
         this.topTubeOffsetY = topTubeOffsetY;
     }
 
