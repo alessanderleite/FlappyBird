@@ -54,12 +54,14 @@ public class GameEngine {
                 // Go to GameOver screen
                 gameState = 2;
                 Log.d("Game", "Over");
+                AppConstants.getSoundBank().playHit();
             } else if (tubes.get(scoringTube).getTubeX() < bird.getX() - AppConstants.getBitmapBank().getTubeWidth()) {
                 score++;
                 scoringTube++;
                 if (scoringTube > AppConstants.numberOfTubes - 1) {
                     scoringTube = 0;
                 }
+                AppConstants.getSoundBank().playPoint();
             }
             for (int i = 0; i < AppConstants.numberOfTubes; i++) {
                 if (tubes.get(i).getTubeX() < -AppConstants.getBitmapBank().getTubeWidth()) {
