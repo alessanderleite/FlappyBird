@@ -12,6 +12,7 @@ public class AppConstants {
     static int SCREEN_WIDTH, SCREE_HEIGHT;
     static int gravity;
     static int VELOCITY_WHEN_JUMPED;
+    static int gapBetweenTopAndBottomTubes;
 
     public static void initialization(Context context) {
         setScreenSize(context);
@@ -19,6 +20,7 @@ public class AppConstants {
         gameEngine = new GameEngine();
         AppConstants.gravity = 3;
         AppConstants.VELOCITY_WHEN_JUMPED = -40;
+        gapBetweenTopAndBottomTubes = 600;
     }
     // Return BitmapBank instance
     public static BitmapBank getBitmapBank() {
