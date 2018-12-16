@@ -2,11 +2,14 @@ package com.example.alessander.flappybird;
 
 import android.graphics.Canvas;
 
+import java.util.ArrayList;
+
 public class GameEngine {
 
     BackgroundImage backgroundImage;
     Bird bird;
     static int gameState;
+    ArrayList<Tube> tubes;
 
     public GameEngine() {
         backgroundImage = new BackgroundImage();
@@ -15,6 +18,7 @@ public class GameEngine {
         // 1 = Playing
         // 2 = GameOver
         gameState = 0;
+        tubes = new ArrayList<>();
     }
 
     public void updateAndDrawBackgroundImage(Canvas canvas) {
