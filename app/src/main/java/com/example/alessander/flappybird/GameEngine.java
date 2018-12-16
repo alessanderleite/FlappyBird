@@ -1,6 +1,8 @@
 package com.example.alessander.flappybird;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -12,6 +14,9 @@ public class GameEngine {
     static int gameState;
     ArrayList<Tube> tubes;
     Random random;
+    int score; // Stores the score
+    int scoringTube; // Keeps track of scoring tube
+    Paint scorePaint;
 
     public GameEngine() {
         backgroundImage = new BackgroundImage();
@@ -23,7 +28,7 @@ public class GameEngine {
         tubes = new ArrayList<>();
         random = new Random();
         for (int i = 0; i < AppConstants.numberOfTubes; i++) {
-            int tubeX = AppConstants.SCREEN_WIDTH + 1 * AppConstants.distanceBetweenTubes;
+            int tubeX = AppConstants.SCREEN_WIDTH + i * AppConstants.distanceBetweenTubes;
             // Get topTubeOffsetY
             int topTubeOffsetY = AppConstants.minTubeOffsetY +
                     random.nextInt(AppConstants.maxTubeOffsetY - AppConstants.minTubeOffsetY + 1);
@@ -31,10 +36,23 @@ public class GameEngine {
             Tube tube = new Tube(tubeX, topTubeOffsetY);
             tubes.add(tube);
         }
+        score = 0;
+        scoringTube = 0;
+        scorePaint = new Paint();
+        scorePaint.setColor(Color.RED);
+        scorePaint.setTextSize(100);
+        scorePaint.setTextAlign(Paint.Align.LEFT);
     }
 
     public void updateAndDrawTubes(Canvas canvas) {
         if (gameState == 1) {
+            if (tubes.get(scoringTube).getTubeX() < bird.getX() - AppConstants.getBitmapBank().getTubeWidth()) {
+                score++;
+                scoringTube++;
+                if (scoringTube > AppConstants.numberOfTubes - 1) {
+                    scoringTube = 0;
+                }
+            }
             for (int i = 0; i < AppConstants.numberOfTubes; i++) {
                 if (tubes.get(i).getTubeX() < - AppConstants.getBitmapBank().getTubeWidth()) {
                     tubes.get(i).setTubeX(tubes.get(i).getTubeX() +
@@ -54,6 +72,7 @@ public class GameEngine {
                 }
 
             }
+            canvas.drawText("Pt: " + score, 0, 110, scorePaint);
         }
     }
 
