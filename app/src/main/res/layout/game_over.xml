@@ -16,6 +16,7 @@
         android:background="@android:color/holo_blue_dark"
         android:textColor="#ffffff"
         android:padding="10dp"
+        android:textSize="18sp"
         android:layout_alignParentLeft="true"/>
 
     <Button
@@ -29,6 +30,7 @@
         android:background="@android:color/holo_blue_dark"
         android:textColor="#ffffff"
         android:padding="10dp"
+        android:textSize="18sp"
         android:layout_alignParentRight="true"/>
 
     <LinearLayout
